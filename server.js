@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
+const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
+
+//Connect To Database
+connectDB();
 
 //Using EJS for views
 app.set("view engine", "ejs");
