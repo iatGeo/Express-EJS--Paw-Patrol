@@ -11,11 +11,3 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
-
-
-//About mongoose.connect
-// Starting from Mongoose 6, these options are always enabled by default:
-// useNewUrlParser
-// useUnifiedTopology
-// useCreateIndex
-// Additionally, useFindAndModify is always disabled by default.
