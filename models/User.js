@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
-  password: String,
+  password: {type: String, unique: true}
 });
 
 
@@ -30,13 +30,24 @@ UserSchema.pre("save", function save(next) {
 
 
 // Helper method for validating user's password.
-UserSchema.methods.comparePassword = function comparePassword(
-  candidatePassword,
-  cb
-) {
-  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    cb(err, isMatch);
-  })
-}
+UserSchema.methods.comparePassword = async function comparePassword(candidatePassword) {
+  try {
+    const isMatch = await bcrypt.compare(candidatePassword, this.password);
+    return isMatch;
+  } catch (err) {
+    throw err;
+  }
+};
+
 
 module.exports = mongoose.model("User", UserSchema)
+
+
+// UserSchema.methods.comparePassword = function comparePassword(
+//   candidatePassword,
+//   cb
+// ) {
+//   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+//     cb(err, isMatch);
+//   })
+// }
