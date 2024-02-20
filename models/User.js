@@ -41,13 +41,3 @@ UserSchema.methods.comparePassword = async function comparePassword(candidatePas
 
 
 module.exports = mongoose.model("User", UserSchema)
-
-
-// UserSchema.methods.comparePassword = function comparePassword(
-//   candidatePassword,
-//   cb
-// ) {
-//   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-//     cb(err, isMatch);
-//   })
-// }
