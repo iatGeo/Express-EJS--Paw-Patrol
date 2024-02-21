@@ -4,10 +4,12 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const methodOverride = require("method-override");
 const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
+const postRoutes = require("./routes/posts");
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -31,6 +33,9 @@ app.use(express.json());
 //Logging
 app.use(logger("dev"));
 
+//Use forms for put / delete
+app.use(methodOverride("_method"));
+
 try {
   // Initialize session middleware
   app.use(
@@ -39,6 +44,10 @@ try {
       resave: false,
       saveUninitialized: false,
       store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
+      cookie: {
+        maxAge: 21600000, //6 hours
+        httpOnly: true
+      }
     })
   );
 
@@ -55,6 +64,7 @@ app.use(flash());
 
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes);
+app.use("/post", postRoutes);
 
 //Server Running
 app.listen(process.env.PORT, () => {

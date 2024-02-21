@@ -20,7 +20,7 @@ module.exports = function (passport) {
         if (isMatch) {
           return done(null, user);
         } else {
-          return done(null, false, { msg: "Invalid email or password." });
+          return done(null, false, { msg: "Invalid password." });
         }
       } catch (err) {
         return done(err);
