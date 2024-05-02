@@ -27,4 +27,7 @@ Once you have cloned the repository, enter the corresponding directory and use  
 ##### API_KEY = (from Cloudinary)
 ##### API_SECRET = (from Cloudinary)
 
+
+<br/>
+<br/>
 After that, you can execute **_npm run start_** to run the project locally
