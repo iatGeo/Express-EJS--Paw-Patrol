@@ -1,0 +1,13 @@
+.img-card {
+   float: left;
+   width: 100%;
+   height: 40vw;
+   max-height: 500px;
+   object-fit: cover;
+}
+
+.center-block {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}

@@ -16,7 +16,7 @@
                         <input type="file" class="form-control" id="imageUpload" name="file">
                     </div>
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
+                        <label for="title" class="form-label">Title (required)</label>
                         <input type="text" class="form-control" id="title" name="title">
                     </div>
                     <div class="mb-3">
@@ -33,9 +33,9 @@
             </div>
             <ul class="row list-unstyled">
             <% for(var i=0; i<posts.length; i++) {%>
-            <li class="col-6 justify-content-between mt-5">
+            <li class="col-6 justify-content-between mt-3">
                 <a href="/post/<%= posts[i]._id%>">
-                <img class="img-fluid" src="<%= posts[i].image%>">
+                <img class="img-fluid img-card" src="<%= posts[i].image%>">
                 </a>
             </li>
             <% } %>
