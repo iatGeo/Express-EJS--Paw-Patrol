@@ -30,4 +30,4 @@ Once you have cloned the repository, enter the corresponding directory and use  
 
 <br/>
 <br/>
-After that, you can execute **_npm run start_** to run the project locally
+After that, you can execute _**npm run start**_ to run the project locally
